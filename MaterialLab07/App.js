@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import {
-  getStudents,
-  saveStudent,
-  deleteStudent,
-} from "./services/studentService";
+  obtenerEstudiantes,
+  guardarEstudiante,
+  eliminarEstudiante,
+} from "./estudianteService";
 
 /*
   ============================================================
@@ -57,7 +57,7 @@ function App() {
   const loadStudents = async (searchText = "") => {
     try {
       setLoading(true);
-      const data = await getStudents(searchText);
+      const data = await obtenerEstudiantes(searchText);
       setStudents(data);
     } catch (error) {
       console.error(error);
@@ -117,7 +117,7 @@ function App() {
         return;
       }
 
-      await saveStudent(form);
+      await guardarEstudiante(form);
       setForm(initialForm);
       await loadStudents(search);
     } catch (error) {
@@ -154,7 +154,7 @@ function App() {
     if (!ok) return;
 
     try {
-      await deleteStudent(id);
+      await eliminarEstudiante(id);
       await loadStudents(search);
     } catch (error) {
       console.error(error);

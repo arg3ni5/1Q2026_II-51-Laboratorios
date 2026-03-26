@@ -4,7 +4,7 @@
 // Ajustar la ruta según el proyecto
 // Ejemplo:
 // import { supabase } from "../supabaseClient";
-import { supabase } from "../supabaseClient";
+import { supabase } from "./supabaseClient";
 
 /*
   ============================================================
@@ -136,7 +136,7 @@ export const crearEstudiante = async (estudiante) => {
   ------------------------------------------------------------
   Actualiza un registro existente
 */
-export const actualizaEstudiante = async (id, estudiante) => {
+export const actualizarEstudiante = async (id, estudiante) => {
   const payload = mapEstudiantePayload(estudiante);
 
   const { data, error } = await supabase
@@ -160,7 +160,7 @@ export const actualizaEstudiante = async (id, estudiante) => {
   ------------------------------------------------------------
   Elimina un registro por ID
 */
-export const eliminaEstudiante = async (id) => {
+export const eliminarEstudiante = async (id) => {
   const { error } = await supabase
     .from(TABLA_NOMBRE)
     .delete()
@@ -186,7 +186,7 @@ export const eliminaEstudiante = async (id) => {
 */
 export const guardarEstudiante = async (estudiante) => {
   if (estudiante.id) {
-    return await actualizaEstudiante(estudiante.id, estudiante);
+    return await actualizarEstudiante(estudiante.id, estudiante);
   }
 
   return await crearEstudiante(estudiante);
