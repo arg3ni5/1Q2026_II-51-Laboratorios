@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import FormEstudiante from "../components/estudiante/FormEstudiante";
-import { obtenerEstudiantePorId } from "../services/estudianteService";
+import { obtenerEstudiantePorId, obtenerEstudiantes } from "../services/estudianteService";
+import EstudianteTabla from "../components/estudiante/estudianteTabla";
 
 const initialForm = {
   id: "",
@@ -17,7 +18,26 @@ function EstudiantePage() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState(initialForm);
+  const [students, setStudents] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [loadingForm, setLoadingForm] = useState(false);
+
+  const loadStudents = async (searchText = "") => {
+      try {
+        setLoading(true);
+        const data = await obtenerEstudiantes(searchText);
+        setStudents(data);
+      } catch (error) {
+        console.error(error);
+        alert(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    useEffect(() => {
+      loadStudents();
+    }, []);
 
   useEffect(() => {
     const loadStudent = async () => {
@@ -59,6 +79,12 @@ function EstudiantePage() {
           initialForm={initialForm}
           loadStudents={() => navigate("/")}
         />
+      )}
+
+      {loading ? (
+        <p>Cargando estudiantes...</p>
+      ) : (
+        <EstudianteTabla students={students} />
       )}
     </section>
   );

@@ -25,7 +25,11 @@ function EstudianteTabla({ students, handleEdit, handleDelete }) {
               <td>{student.carrera}</td>
               <td>{student.fechaNac || ""}</td>
               <td>
-                <button onClick={() => handleEdit(student)}>Editar</button> <button onClick={() => handleDelete(student.id)}>Eliminar</button>
+                <div style={{ display: "flex", gap: "8px" }}>
+                  {typeof handleEdit === "function" && <button onClick={() => handleEdit(student)}>Editar</button>}
+
+                  {typeof handleDelete === "function" && <button onClick={() => handleDelete(student.id)}>Eliminar</button>}
+                </div>
               </td>
             </tr>
           ))
