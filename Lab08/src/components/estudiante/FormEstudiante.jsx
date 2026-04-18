@@ -1,5 +1,5 @@
+import { guardarEstudiante } from "../../services/estudianteService";
 import Input from "../shared/Input";
-import { guardarEstudiante } from "../../estudianteService";
 
 function FormEstudiante({ form, setForm, loadStudents, initialForm }) {
   /*
