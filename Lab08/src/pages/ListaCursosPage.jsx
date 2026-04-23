@@ -54,7 +54,7 @@ function ListaCursosPage() {
   };
 
   const handleEdit = (curso) => {
-    navigate(`/editar/${curso.id}`);
+    navigate(`/cursos/editar/${curso.id}`);
   };
 
   return (

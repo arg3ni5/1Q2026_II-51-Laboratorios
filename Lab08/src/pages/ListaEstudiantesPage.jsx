@@ -53,7 +53,7 @@ function ListaEstudiantesPage() {
   };
 
   const handleEdit = (student) => {
-    navigate(`/editar/${student.id}`);
+    navigate(`/estudiante/editar/${student.id}`);
   };
 
   return (
