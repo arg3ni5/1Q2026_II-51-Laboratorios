@@ -61,8 +61,8 @@ export const obtenerTodos = async (search = "") => {
   const { data, error } = await query;
 
   if (error) {
-    console.error("Error al cargar cursos:", error);
-    throw new Error("No se pudieron cargar los cursos");
+    console.error(`Error al cargar ${ENTIDAD_NOMBRE}s:`, error);
+    throw new Error(`No se pudieron cargar los ${ENTIDAD_NOMBRE}s`);
   }
 
   return data;
@@ -84,8 +84,8 @@ export const obtener = async (id) => {
     .single();
 
   if (error) {
-    console.error("Error al obtener curso:", error);
-    throw new Error("No se pudo obtener el curso");
+    console.error(`Error al obtener ${ENTIDAD_NOMBRE}:`, error);
+    throw new Error(`No se pudo obtener el ${ENTIDAD_NOMBRE}`);
   }
 
   return data;
@@ -116,7 +116,7 @@ export const crear = async (curso) => {
 
 /*
   ------------------------------------------------------------
-  Actualizar estudiante
+  Actualizar curso
   ------------------------------------------------------------
   Actualiza un registro existente
 */
