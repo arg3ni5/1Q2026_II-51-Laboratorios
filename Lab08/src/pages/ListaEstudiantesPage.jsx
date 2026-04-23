@@ -13,14 +13,14 @@ function ListaEstudiantesPage() {
 
   const loadStudents = async (searchText = "") => {
     try {
-      setLoading(true);
+      setLoading(true); // Indicar que se está cargando
       const data = await obtenerEstudiantes(searchText);
       setStudents(data);
     } catch (error) {
       console.error(error);
       alert(error.message);
     } finally {
-      setLoading(false);
+      setLoading(false); // Indicar que se ha terminado de cargar
     }
   };
 
@@ -28,6 +28,7 @@ function ListaEstudiantesPage() {
     loadStudents();
   }, []);
 
+  // Función para mapear el formulario al payload esperado por Supabase
   const handleSearch = async () => {
     await loadStudents(search);
   };
@@ -37,6 +38,7 @@ function ListaEstudiantesPage() {
     await loadStudents("");
   };
 
+  // Función para mapear el formulario al payload esperado por Supabase
   const handleDelete = async (id) => {
     const ok = confirm("¿Desea eliminar este estudiante?");
     if (!ok) return;
