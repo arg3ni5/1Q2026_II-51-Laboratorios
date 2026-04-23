@@ -1,6 +1,6 @@
 import { NavLink, Route, Routes } from "react-router-dom";
-import EstudiantePage from "./pages/EstudientePage";
 import ListaEstudiantesPage from "./pages/ListaEstudiantesPage";
+import EstudiantePage from "./pages/EstudiantePage";
 
 function App() {
   return (
